@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <span class="title">Calculo avançado:</span>
+    <span class="title">Apex Avançado:</span>
     <span class="subtitle">Materiais para vigas</span>
     <v-row>
       <v-col cols="3">
@@ -18,38 +18,19 @@
           <v-row>
             <v-col>
               quantidade de areia
-              <v-text-field
-                background-color="success"
-                dark
-                v-model="amount_sand"
-                label="Solo"
-                solo
-                readonly
-              ></v-text-field>
+              <v-text-field background-color="success" dark v-model="amount_sand" label="Solo" solo
+                readonly></v-text-field>
             </v-col>
 
             <v-col>
               Quantidade de cimento
-              <v-text-field
-                background-color="success"
-                dark
-                v-model="cement_amount"
-                label="Solo"
-                solo
-                readonly
-              ></v-text-field>
+              <v-text-field background-color="success" dark v-model="cement_amount" label="Solo" solo
+                readonly></v-text-field>
             </v-col>
 
             <v-col>
               quantidade de brita
-              <v-text-field
-                background-color="success"
-                dark
-                v-model="gravel"
-                label="Solo"
-                solo
-                readonly
-              ></v-text-field>
+              <v-text-field background-color="success" dark v-model="gravel" label="Solo" solo readonly></v-text-field>
             </v-col>
 
             <v-btn @click="setResult()" color="success" block>Calcular</v-btn>
@@ -79,7 +60,7 @@ export default {
   },
   methods: {
     setResult() {
-      var gravel = (this.length * this.width *this.height * 0.7) / 10000;
+      var gravel = (this.length * this.width * this.height * 0.7) / 10000;
       var gravel = gravel.toFixed(2);
 
       var amount_sand =
@@ -89,7 +70,7 @@ export default {
 
       var cement_amount = ((gravel / this.gravel_proportion) * 1400) / 50;
 
-      var cement_amount =  cement_amount.toFixed(2);
+      var cement_amount = cement_amount.toFixed(2);
     }
   }
 };
