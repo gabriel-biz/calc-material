@@ -1,0 +1,30 @@
+name: Sync fork with upstream
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * *" # diário, 03:00 UTC
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar upstream
+        run: |
+          git remote add upstream https://github.com/Welves-de-Paula/calc-material.git
+          git fetch upstream
+
+      - name: Sincronizar calc-dev
+        run: |
+          git checkout main
+          git merge upstream/calc-dev
+
+      - name: Push para o fork
+        run: |
+          git push origin main
